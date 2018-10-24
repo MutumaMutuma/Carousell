@@ -53,7 +53,7 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return HttpResponse('Thank you for Joining Carousel. Now you can now <a href="/accounts/login/">Login</a> your account.')
     else:
         return HttpResponse('Activation link is invalid!')
 
@@ -68,3 +68,17 @@ def profile(request):
     profile = Profile.objects.get(user=current_user.id)
     
     return render(request, 'profile/profile.html', {"date": date, "profile":profile})
+
+def edit_profile(request):
+    date = dt.date.today()
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user.id)
+    if request.method == 'POST':
+        signup_form = EditForm(request.POST, request.FILES,instance=request.user.profile) 
+        if signup_form.is_valid():
+            signup_form.save()
+            return redirect('profile')
+    else:
+        signup_form =EditForm() 
+        
+    return render(request, 'profile/edit_profile.html', {"date": date, "form":signup_form,"profile":profile})
