@@ -46,6 +46,7 @@
 <nav class="sticky-top navbar-light">
   <div class="blocks-menus">
       <div class="container">
+        {% if user.is_authenticated %}
         <ul class="primary-menus">
           
           <li class="menus-dropdown">
@@ -106,15 +107,18 @@
               </li>
           
           <li class="menus-dropdown">
-              <a href="#"><i class="material-icons">person</i>Account<i class="fa fa-angle-down"></i></a>
+              <a href="#">Account & Settings<i class="fa fa-angle-down"></i></a>
               <ul class="dropdown">
-                  <li><a href="#">Profile</a></li>
+                  <li><a href="{% url 'profile'%}">Profile</a></li>
                   <li><a href="#">Change password</a></li>
                   <li><a href="#">Carousel Users</a></li>
                   <li><a href="/logout">Log Out</a></li>
               </ul>
             </li>
         </ul>
+        {% else%}
+        <img src="/static/pics/carouselllogo_2015.png" alt=""  width="150px">
+        {% endif%}
       </div>
     </div>
 </nav>
