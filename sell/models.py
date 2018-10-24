@@ -37,12 +37,24 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+
+
+# CATEGORY_CHOICES = (
+#     ('Fashion & Style','FASHION & STYLE'),
+#     ('Cars & Property', 'CARS & PROPERTY'),
+#     ('Electronics & Mobiles','ELECTRONICS & MOBILES'),
+#     ('Home & Living','HOME & LIVING'),
+#     ('Others','Others'),
+# )
+# class Category(models.Model):
+#     category = models.CharField(max_length=5, choices=CATEGORY_CHOICES, default='Fashion & Style')
+
 class Item(models.Model):
     name = models.CharField(max_length = 300)
     image = models.ImageField(upload_to='neighimage/', null=True)
-    description = models.CharField(max_length = 300,default='My hood!!!')
+    description = models.CharField(max_length = 300)
     price = models.IntegerField(default='$ 0.0')
-    
+    # category = models.CharField(max_length = 300)
 
     posted_time = models.DateTimeField(auto_now_add=True,)
     seller = models.ForeignKey(User, related_name='userholder')
@@ -64,13 +76,5 @@ class Item(models.Model):
         items = cls.objects.all()
         return items
 
-CATEGORY_CHOICES = (
-    ('Fashion & Style','FASHION & STYLE'),
-    ('Cars & Property', 'CARS & PROPERTY'),
-    ('Electronics & Mobiles','ELECTRONICS & MOBILES'),
-    ('Home & Living','HOME & LIVING'),
-    ('Others','Others'),
-)
 
-class Category(models.Model):
-  category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='Fashion & Style')
+
