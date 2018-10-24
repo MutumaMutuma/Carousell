@@ -1,0 +1,120 @@
+
+<nav style="" class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="/"> <img src="/static/pics/carouselllogo_2015.png" alt=""  width="150px"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+          <form role="search" class="form-inline my-2 my-lg-0">
+              <input type="search" name="business" placeholder="Search">
+          </form>
+        
+        <div style="color:rgb(43, 85, 124);"></div>
+      </ul>
+      {% if user.is_authenticated %}
+      {% if request.user.profile.profile_pic %}
+          <section> <img style="border-radius: 50% ; padding: 0.15rem;   background: linear-gradient(to right bottom, #2cd8a4, #2ec97b);" class=" img-circle"
+          src="{{request.user.profile.profile_pic.url}}" alt="" width="50px" height="50px">  </section> <br>
+      {% else %}
+          <img style="border-radius: 50% ; padding: 0.15rem;  background: linear-gradient(to right bottom, #d8b02ce1, #2e7ec970, #d8b02ce1);" class=" img-circle"
+          src="https://www.bristolbrewing.com/wp-content/uploads/2017/08/default-avatar.png" alt="" width="50px" height="50px"> </section> <br>
+      
+      {% endif %}
+      
+        <div style="padding-right:30px;">
+            <span style="font-size:25px; font-family:cursive;">{{ user.username}}</span> 
+        </div>
+        
+        <div class="button-8">
+            <div class="eff-8"></div>
+            <a href="#"> Sell </a>
+        </div>
+      {% else%}
+      <div class="button-8">
+          <div class="eff-8"></div>
+          <a href="/accounts/login/"> Login </a>
+      </div>
+      
+      {% endif%}
+    </div>
+
+</nav>
+<hr>
+<nav class="sticky-top navbar-light">
+  <div class="blocks-menus">
+      <div class="container">
+        <ul class="primary-menus">
+          
+          <li class="menus-dropdown">
+            <a href="#">Fashion & style<i class="fa fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="#">Clothes</a></li>
+              <li><a href="#">Foot Wears</a></li>
+              <li><a href="#">Jewellery</a></li>
+              <li><a href="#">Bags</a></li>
+              <li><a href="#">Wallets</a></li>
+              
+            </ul>
+          </li>
+          <li class="menus-dropdown">
+            <a href="#">Cars & Property <i class="fa fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="#">Submenu 1</a></li>
+              <li><a href="#">Submenu 2</a></li>
+              <li><a href="#">Submenu 3</a></li>
+              <li><a href="#">Submenu 1</a></li>
+              <li><a href="#">Submenu 2</a></li>
+              <li><a href="#">Submenu 3</a></li>
+              <li><a href="#">Submenu 1</a></li>
+              <li><a href="#">Submenu 2</a></li>
+              <li><a href="#">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="menus-dropdown">
+              <a href="#">Electronics & Mobiles<i class="fa fa-angle-down"></i></a>
+              <ul class="dropdown">
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+                <li><a href="#">Submenu 3</a></li>
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+                <li><a href="#">Submenu 3</a></li>
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+                <li><a href="#">Submenu 3</a></li>
+              </ul>
+            </li>
+            <li class="menus-megamenus">
+                <a href="#"> Home & living<i class="fa fa-angle-down"></i></a>
+                <ul class="mega-menus">
+                  <div class="section">
+                    <h3>Garden</h3>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Carousel Users</a></li>
+                    <li><a href="#">Settings</a></li>
+                  </div>
+                  <div class="section">
+                    <h3>Funiture</h3>
+                    <li><a href="#">Change password</a></li>
+                    <li><a href="#">Sold</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                  </div>
+                </ul>
+              </li>
+          
+          <li class="menus-dropdown">
+              <a href="#"><i class="material-icons">person</i>Account<i class="fa fa-angle-down"></i></a>
+              <ul class="dropdown">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Change password</a></li>
+                  <li><a href="#">Carousel Users</a></li>
+                  <li><a href="/logout">Log Out</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
