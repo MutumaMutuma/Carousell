@@ -42,9 +42,13 @@ class Item(models.Model):
     image = models.ImageField(upload_to='neighimage/', null=True)
     description = models.CharField(max_length = 300,default='My hood!!!')
     price = models.IntegerField(default='$ 0.0')
+    
 
     posted_time = models.DateTimeField(auto_now_add=True,)
     seller = models.ForeignKey(User, related_name='userholder')
+
+    class Meta:
+        ordering = ['-posted_time']
 
     def __str__(self):
         return self.name
@@ -59,3 +63,14 @@ class Item(models.Model):
     def get_items(cls):
         items = cls.objects.all()
         return items
+
+CATEGORY_CHOICES = (
+    ('Fashion & Style','FASHION & STYLE'),
+    ('Cars & Property', 'CARS & PROPERTY'),
+    ('Electronics & Mobiles','ELECTRONICS & MOBILES'),
+    ('Home & Living','HOME & LIVING'),
+    ('Others','Others'),
+)
+
+class Category(models.Model):
+  category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='Fashion & Style')
