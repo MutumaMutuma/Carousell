@@ -62,3 +62,9 @@ def index(request):
     date = dt.date.today()
     return render(request, 'index.html',{"date":date})
 
+def profile(request):
+    date = dt.date.today()
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user.id)
+    
+    return render(request, 'profile/profile.html', {"date": date, "profile":profile})
