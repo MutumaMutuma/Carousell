@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         
-          <form role="search" class="form-inline my-2 my-lg-0">
-              <input type="search" name="business" placeholder="Search">
+          <form role="search" action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0">
+              <input type="search" name="category" placeholder="Search">
           </form>
         
         <div style="color:rgb(43, 85, 124);"></div>
@@ -30,7 +30,7 @@
         
         <div class="button-8">
             <div class="eff-8"></div>
-            <a href="#"> Sell </a>
+            <a href="{% url 'new-sell'%}"> Sell </a>
         </div>
       {% else%}
       <div class="button-8">
@@ -66,12 +66,7 @@
               <li><a href="#">Submenu 1</a></li>
               <li><a href="#">Submenu 2</a></li>
               <li><a href="#">Submenu 3</a></li>
-              <li><a href="#">Submenu 1</a></li>
-              <li><a href="#">Submenu 2</a></li>
-              <li><a href="#">Submenu 3</a></li>
-              <li><a href="#">Submenu 1</a></li>
-              <li><a href="#">Submenu 2</a></li>
-              <li><a href="#">Submenu 3</a></li>
+             
             </ul>
           </li>
           <li class="menus-dropdown">
@@ -80,12 +75,7 @@
                 <li><a href="#">Submenu 1</a></li>
                 <li><a href="#">Submenu 2</a></li>
                 <li><a href="#">Submenu 3</a></li>
-                <li><a href="#">Submenu 1</a></li>
-                <li><a href="#">Submenu 2</a></li>
-                <li><a href="#">Submenu 3</a></li>
-                <li><a href="#">Submenu 1</a></li>
-                <li><a href="#">Submenu 2</a></li>
-                <li><a href="#">Submenu 3</a></li>
+               
               </ul>
             </li>
             <li class="menus-megamenus">
@@ -98,7 +88,7 @@
                     <li><a href="#">Settings</a></li>
                   </div>
                   <div class="section">
-                    <h3>Funiture</h3>
+                    <h3>FURNITURE</h3>
                     <li><a href="#">Change password</a></li>
                     <li><a href="#">Sold</a></li>
                     <li><a href="/logout">Log Out</a></li>

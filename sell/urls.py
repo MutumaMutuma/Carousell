@@ -11,6 +11,10 @@ urlpatterns = [
         views.activate, name='activate'),
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^edit/profile/$',views.edit_profile,name='edit_profile'),
+    url(r'^new/sell/$', views.new_sell, name='new-sell'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^items/(\d+)',views.items,name='items'),
+
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

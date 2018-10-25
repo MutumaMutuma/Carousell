@@ -13,3 +13,8 @@ class EditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio','profile_pic']
+
+class ItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ['name','image','description','price','category']

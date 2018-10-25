@@ -60,7 +60,8 @@ def activate(request, uidb64, token):
 
 def index(request):
     date = dt.date.today()
-    return render(request, 'index.html',{"date":date})
+    items = Item.objects.all()
+    return render(request, 'index.html',{"date":date, "items":items})
 
 def profile(request):
     date = dt.date.today()
@@ -69,6 +70,7 @@ def profile(request):
     
     return render(request, 'profile/profile.html', {"date": date, "profile":profile})
 
+@login_required(login_url='/accounts/login/')
 def edit_profile(request):
     date = dt.date.today()
     current_user = request.user
@@ -82,3 +84,40 @@ def edit_profile(request):
         signup_form =EditForm() 
         
     return render(request, 'profile/edit_profile.html', {"date": date, "form":signup_form,"profile":profile})
+
+@login_required(login_url='/accounts/login/')
+def new_sell(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            sell = form.save(commit=False)
+            sell.user = current_user
+            sell.seller = request.user
+            sell.save()
+        return redirect('index')
+
+    else:
+        form = ItemForm()
+    return render(request, 'new_sell.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_categorys = Category.objects.filter(category=search_term)
+        message = f"{search_term}"
+        profiles=  Profile.objects.all()
+      
+        return render(request, 'search.html',{"message":message,"category": searched_categorys,'profiles':profiles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+
+@login_required(login_url='/accounts/login/')
+def items(request,id):
+    date = dt.date.today()
+    posts=Item.objects.get(id=id)
+    return render(request,'each_item.html',{"posts":posts,"date":date})

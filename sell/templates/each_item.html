@@ -1,0 +1,89 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New project</title>
+  {{form.media}}
+
+{% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+</head>
+
+
+{% block content %}
+<body>
+
+    
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page">{{posts.category}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{posts.name}}</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-md-6">
+            
+            <div  class="card-body">
+                <img class="img-responsive img-thumbnail" src="{{posts.image.url}}" alt="" width="80%" height="80%">
+            </div>
+            <div class="card">
+                
+            </div>
+        </div>
+        
+       <div class="col-md-1">
+
+       </div>
+        <div class="col-md-5 ">
+            <div class="card">
+                <div class="card-body"><span style="float:right; padding-right: 20px ;"> <a href="#"><i style="color:red;" class="material-icons">favorite_border</i></a> </span>
+                    <span style="float:right; padding-right: 20px;"> <a href="#"><i class="material-icons">share</i></a> </span>
+                    
+                    <h3>Ksh: {{posts.price}}</h3>
+                    <hr>
+                    <h4 class="text-muted">{{posts.name}}</h4>
+                    <small style="font-size: 10px;">Posted {{posts.posted_time|timesince}} ago</small>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                
+                <div class="card-body">
+                    <h4>contact seller</h4>
+                    <img style="width:80px; border-radius: 50%;" class="img-responsive" src="{{posts.seller.profile.profile_pic.url }}" alt=""> <span>{{posts.seller.username|upper}}</span> <br>
+                    <h6 style="text-align:center;"><a href="#">VIEW PROFILE</a></h6>
+                    <div style="float:right;" class="button-8">
+                        <div class="eff-8"></div>
+                        <a href="{% url 'new-sell'%}">CALL </a>
+                    </div>
+                    <div class="button-8">
+                            <div class="eff-8"></div>
+                            <a href="{% url 'new-sell'%}">CHAT </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+  
+
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+   {% endblock %}
+</body>
+{% endblock%}
+
+
+</html>
